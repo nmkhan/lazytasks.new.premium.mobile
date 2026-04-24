@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { translate } from '../../utils/i18n';
 import { NavLink } from '@mantine/core';
 
 
@@ -12,7 +13,7 @@ const LicenseNav = () => {
                 href="#/license"
                 key={`License`}
                 active={active}
-                label={`License`}
+                label={translate("License")}
                 onClick={() => setActive(true)}
                 variant="filled"
                 size="sm"

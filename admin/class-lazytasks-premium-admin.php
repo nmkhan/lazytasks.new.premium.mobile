@@ -105,11 +105,17 @@ class Lazytasks_Premium_Admin {
 		if (isset($_REQUEST['page']) && str_contains($_REQUEST['page'], 'lazytasks-page')) {
 			// phpcs:ignore WordPress.WP.EnqueuedScriptsScope
 			wp_enqueue_script('lazytasks-premium-script', plugin_dir_url( __DIR__ ) . 'admin/frontend/build/index.js', array('lazytasks-script', 'wp-element'), $this->version, true);
+			wp_set_script_translations(
+				'lazytasks-premium-script',
+				'lazytasks-premium',
+				plugin_dir_path( __DIR__ ) . 'languages'
+			);
 			wp_localize_script('lazytasks-premium-script', 'appLocalizerPremium', [
 				'apiUrl' => home_url('/wp-json'),
 				'homeUrl' => home_url(''),
 				'nonce' => wp_create_nonce('wp_rest'),
                 'qrCode' => get_option('lazytask_free_qr_code', ''),
+				'i18n' => \LazytasksPremium\Services\TransStrings::getStrings(),
 			]);
 		}
 

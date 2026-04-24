@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { translate } from '../../utils/i18n';
 import { useDispatch, useSelector } from "react-redux";
 import {
     Button,
@@ -51,7 +52,7 @@ const LicenseForm = () => {
         },
 
         validate: {
-            license_key: (value) => (value.length < 1 ? 'License key is required' : null),
+            license_key: (value) => (value.length < 1 ? translate("License key is required") : null),
         },
     });
     const handleSubmit = (values) => {
@@ -65,7 +66,7 @@ const LicenseForm = () => {
                 showNotification({
                     id: 'load-data',
                     loading: true,
-                    title: 'License',
+                    title: translate("License"),
                     message: response.payload && response.payload.message && response.payload.message,
                     autoClose: 2000,
                     disallowClose: true,
@@ -100,7 +101,7 @@ const LicenseForm = () => {
                 showNotification({
                     id: 'load-data',
                     loading: true,
-                    title: 'License',
+                    title: translate("License"),
                     message: response.payload && response.payload.message && response.payload.message,
                     autoClose: 2000,
                     disallowClose: true,
@@ -153,7 +154,7 @@ const LicenseForm = () => {
 
         if (value.length < 1) {
             setIsEmpty(true)
-            form.setFieldError('license_key', 'License key is required');
+            form.setFieldError('license_key', translate("License key is required"));
         } else {
             setIsEmpty(false)
             form.clearFieldError('license_key');
@@ -173,7 +174,7 @@ const LicenseForm = () => {
                         <Grid.Col span={6} offset={3}>
                             <Card radius="md" bg="#F5F8F9">
                                 <Title color="#39758d" order={4} className="text-center w-full pb-2">
-                                    Activate Your Plugin License
+                                    {translate("Activate Your Plugin License")}
                                 </Title>
                                 <Grid>
                                     <Grid.Col span={9}>
@@ -182,7 +183,7 @@ const LicenseForm = () => {
                                             label={
                                                 <>
                                                     <Group className={`pb-2`} spacing={5} gap={5}>
-                                                        Enter your license key to activate the LazyTasks plugin.
+                                                        {translate("Enter your license key to activate the LazyTasks plugin.")}
                                                         <Popover width={320} position="top-start" withArrow shadow="md"
                                                             opened={opened}>
                                                             <Popover.Target>
@@ -190,14 +191,13 @@ const LicenseForm = () => {
                                                                     size={16} />
                                                             </Popover.Target>
                                                             <Popover.Dropdown>
-                                                                Insert your License key here which you will find to your
-                                                                lazycoders.co site profile.
+                                                                {translate("Insert your License key here which you will find to your lazycoders.co site profile.")}
                                                             </Popover.Dropdown>
                                                         </Popover>
                                                     </Group>
                                                 </>
                                             }
-                                            placeholder="Enter your license key"
+                                            placeholder={translate("Enter your license key")}
                                             key={form.key('license_key')}
                                             defaultValue={() => license || ''}
                                             {...form.getInputProps('license_key')}
@@ -212,7 +212,7 @@ const LicenseForm = () => {
                                                 "fontSize": 'var(--input-error-size, calc(var(--mantine-font-size-sm) - calc(0.125rem * var(--mantine-scale))))'
                                             }}
                                                 className="!text-[10px] mantine-InputWrapper-success mantine-TextInput-success"
-                                                id="mantine-89ny2ja26-success">License key verified successfully!</p>
+                                                id="mantine-89ny2ja26-success">{translate("License key verified successfully!")}</p>
                                         }
 
                                     </Grid.Col>
@@ -226,7 +226,7 @@ const LicenseForm = () => {
                                             variant="filled"
                                             color="#ED7D31"
                                             type="submit">
-                                            {isEmpty ? 'Verify' : !isEmpty && !isVerified ? 'Verify' : 'Verified'}
+                                            {isEmpty ? translate("Verify") : !isEmpty && !isVerified ? translate("Verify") : translate("Verified")}
                                         </Button>
                                     </Grid.Col>
                                 </Grid>
@@ -245,7 +245,7 @@ const LicenseForm = () => {
                             <Grid.Col span={6} offset={3}>
                                 <Card radius="md" bg="#F5F8F9">
                                     <Title color="#39758d" order={4} className="text-center w-full pb-2">
-                                        Activate Your Plugin License
+                                        {translate("Activate Your Plugin License")}
                                     </Title>
                                     <Grid>
                                         <Grid.Col span={9}>
@@ -254,7 +254,7 @@ const LicenseForm = () => {
                                                 label={
                                                     <>
                                                         <Group className={`pb-2`} spacing={5} gap={5}>
-                                                            Enter your license key to activate the LazyTasks plugin.
+                                                            {translate("Enter your license key to activate the LazyTasks plugin.")}
                                                             <Popover width={320} position="top-start" withArrow
                                                                 shadow="md"
                                                                 opened={opened}>
@@ -263,15 +263,13 @@ const LicenseForm = () => {
                                                                         onMouseLeave={close} size={16} />
                                                                 </Popover.Target>
                                                                 <Popover.Dropdown>
-                                                                    Insert your License key here which you will find to
-                                                                    your
-                                                                    lazycoders.co site profile.
+                                                                    {translate("Insert your License key here which you will find to your lazycoders.co site profile.")}
                                                                 </Popover.Dropdown>
                                                             </Popover>
                                                         </Group>
                                                     </>
                                                 }
-                                                placeholder="Enter your license key"
+                                                placeholder={translate("Enter your license key")}
                                                 defaultValue={license || ''}
                                                 disabled
                                             />
@@ -313,10 +311,10 @@ const LicenseForm = () => {
                                 </Box>
                                 <Box className="md:w-1/2 text-center md:text-left mb-4 md:mb-0">
                                     <Title order={3} c="#000" className="font-bold mb-2">
-                                        Your trial is about to expire
+                                        {translate("Your trial is about to expire")}
                                     </Title>
                                     <Text c="#000" className="mb-4">
-                                        Upgrade your experience with the Lazytasks mobile App and get even more out of your Tasks Management!
+                                        {translate("Upgrade your experience with the Lazytasks mobile App and get even more out of your Tasks Management!")}
                                     </Text>
                                     <Anchor href="https://lazycoders.co/lazytasks/" target="_blank" underline='never'>
                                         <Button
@@ -328,7 +326,7 @@ const LicenseForm = () => {
                                             mt={`sm`}
                                         // style={{height: '48px'}}
                                         >
-                                            Purchase Now
+                                            {translate("Purchase Now")}
                                         </Button>
                                     </Anchor>
                                 </Box>
@@ -365,7 +363,7 @@ const LicenseForm = () => {
                                                 }}>
                                                     Step-1:
                                                 </pill>
-                                                Download LazyTasks Mobile App
+                                                {translate("Download LazyTasks Mobile App")}
                                             </Text>
                                         </Box>
                                     </Grid.Col>
@@ -434,7 +432,7 @@ const LicenseForm = () => {
                                             marginRight: '10px'
                                         }}>Step-2:
                                         </pill>
-                                        Connect Your LazyTasks Mobile App
+                                        {translate("Connect Your LazyTasks Mobile App")}
                                     </Text>
                                 </Box>
                             </Grid.Col>

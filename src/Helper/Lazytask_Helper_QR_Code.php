@@ -15,7 +15,7 @@ class Lazytask_Helper_QR_Code {
 		if($qrCodeImage) {
 			return array(
 				'status' => 200,
-				'message' => 'QR Code already generated',
+				'message' => __('QR Code already generated', 'lazytasks-premium'),
 				'uploaded_url' => $qrCodeImage,
 			);
 		}*/
@@ -64,7 +64,7 @@ class Lazytask_Helper_QR_Code {
 		}
 		return array(
 			'status' => 200,
-			'message' => 'QR Code generated successfully',
+			'message' => __('QR Code generated successfully', 'lazytasks-premium'),
 			'uploaded_url' => get_option('lazytask_premium_qr_code'),
 		);
 

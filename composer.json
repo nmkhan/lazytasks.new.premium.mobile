@@ -16,5 +16,9 @@
         "ext-json": "*",
         "chillerlan/php-qrcode": "^5.0.2",
         "yahnis-elsts/plugin-update-checker": "^5.6"
+    },
+    "scripts": {
+        "make-pot":  "wp i18n make-pot . languages/lazytasks-premium.pot --domain=lazytasks-premium --exclude=admin/frontend/node_modules,admin/frontend/build,vendor",
+        "make-json": "wp i18n make-json languages/ --no-purge"
     }
 }

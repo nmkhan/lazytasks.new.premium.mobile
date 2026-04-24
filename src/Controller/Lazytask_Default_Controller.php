@@ -58,7 +58,7 @@ class Lazytask_Default_Controller {
 		if ( ! $license_key ) {
 			return array(
 				'status' => 404,
-				'message' => 'License key is not found!',
+				'message' => __('License key is not found!', 'lazytasks-premium'),
 				'value' => 'not-found',
 				'data' => [
 					"license_status" => "false",
@@ -73,7 +73,7 @@ class Lazytask_Default_Controller {
 		if ( $domain && $domain !== $siteUrl ) {
 			return array(
 				'status' => 404,
-				'message' => 'License key is not valid for this domain!',
+				'message' => __('License key is not valid for this domain!', 'lazytasks-premium'),
 				'value' => 'invalid-domain',
 				'data' => [
 					"license_status" => "false",
@@ -123,7 +123,7 @@ class Lazytask_Default_Controller {
 		if ( is_wp_error( $response ) ) {
 			return array(
 				'status' => 400,
-				'message' => 'Something went wrong! Please try again later.',
+				'message' => __('Something went wrong! Please try again later.', 'lazytasks-premium'),
 				'value' => 'error',
 				'data' => [
 					"license_status" => false,
@@ -153,7 +153,7 @@ class Lazytask_Default_Controller {
 			}
 			return array(
 				'status' => 200,
-				'message' => 'License key verified successfully!',
+				'message' => __('License key verified successfully!', 'lazytasks-premium'),
 				'value' => 'valid',
 				'data' => $returnResponse,
 			);
@@ -179,7 +179,7 @@ class Lazytask_Default_Controller {
 		if ( ! get_option('lazytask_license_activate') ) {
 			return [
 				'status' => 400,
-				'message' => 'License is not active.',
+				'message' => __('License is not active.', 'lazytasks-premium'),
 				'data' => [
 					"license_status" => false,
 					"purchase_date" => null,
@@ -192,7 +192,7 @@ class Lazytask_Default_Controller {
 		if ( $domain && $domain !== $siteUrl ) {
 			return new WP_REST_Response( [
 				'status' => 404,
-				'message' => 'Domain is not valid for this license key!',
+				'message' => __('Domain is not valid for this license key!', 'lazytasks-premium'),
 				'data' => [
 					"license_status" => false,
 					"purchase_date" => null,
@@ -228,7 +228,7 @@ class Lazytask_Default_Controller {
 		if ( is_wp_error( $response ) ) {
 			return new WP_REST_Response( array(
 				'status' => 500,
-				'message' => 'Server error: ' . $response->get_error_message(),
+				'message' => __('Server error: ', 'lazytasks-premium') . $response->get_error_message(),
 				'data' => [
 					"license_status" => false,
 					"purchase_date" => null,
@@ -249,7 +249,7 @@ class Lazytask_Default_Controller {
 			return new WP_REST_Response(
 				[
 					'status' => 200,
-					'message' => 'License deactivated successfully.',
+					'message' => __('License deactivated successfully.', 'lazytasks-premium'),
 					'data' => [
 						"license_status" => false,
 						"purchase_date" => null,
@@ -277,14 +277,14 @@ class Lazytask_Default_Controller {
 	public function getLicenseKey() {
 		//check Lazytask_Lazytasks_Premium class
 		if(!class_exists('Lazytask_Lazytasks_Premium')) {
-			return new WP_REST_Response( [ 'status' => 404, 'message'=> 'Premium plugin is not active', 'data' => '' ], 404 );
+			return new WP_REST_Response( [ 'status' => 404, 'message'=> __('Premium plugin is not active', 'lazytasks-premium'), 'data' => '' ], 404 );
 		}
 
 		$license_key = get_option('lazytask_license_key', '');
 		if($license_key) {
 			return new WP_REST_Response( [ 'status' => 200, 'data' => $license_key ], 200 );
 		}
-		return new WP_REST_Response( [ 'status' => 404, 'message'=> 'License key is not found', 'data' => '' ], 404 );
+		return new WP_REST_Response( [ 'status' => 404, 'message'=> __('License key is not found', 'lazytasks-premium'), 'data' => '' ], 404 );
 	}
 
 }

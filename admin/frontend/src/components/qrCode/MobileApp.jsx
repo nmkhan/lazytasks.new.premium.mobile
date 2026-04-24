@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import { translate } from '../../utils/i18n';
 import {Button, Popover, TextInput, Image, Flex, Box, Text, Grid} from "@mantine/core";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchQRCode} from "./store/qrCodeSlice";
@@ -19,12 +20,12 @@ export function MobileApp() {
                   size="lg"
                   className={`font-semibold`}
                   variant="filled"
-                  color="#39758D">Mobile App</Button>
+                  color="#39758D">{translate("Mobile App")}</Button>
           </Popover.Target>
           <Popover.Dropdown>
               <Grid justify="space-between" align="stretch">
                   <Grid.Col span={9}>
-                      <Text size="md">Direction here</Text>
+                      <Text size="md">{translate("Direction here")}</Text>
                   </Grid.Col>
                   <Grid.Col span={3}>
                       { qrCode &&
